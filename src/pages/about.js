@@ -1,13 +1,7 @@
 import React from "react"
-import Preview from "../cms/templates/abouttemplate"
 
 const about = props => {
-  return (
-    <div>
-      about page
-      <Preview />
-    </div>
-  )
+  return <div>about page</div>
 }
 
 export default about

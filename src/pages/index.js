@@ -2,6 +2,7 @@ import React from "react"
 import Image from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { graphql } from "gatsby"
 
 const IndexPage = ({ data }) => {
   const {
@@ -21,5 +22,17 @@ const IndexPage = ({ data }) => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query HomePageQuery {
+    file(relativePath: { eq: "logo.png" }) {
+      childImageSharp {
+        fluid {
+          src
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
