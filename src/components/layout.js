@@ -9,8 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import BackgroundImage from "gatsby-background-image"
 import Header from "./header"
-import "./layout.css"
+import Footer from "./Footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,26 +21,28 @@ const Layout = ({ children }) => {
           title
         }
       }
+      file(relativePath: { eq: "greybg.jpg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
     }
   `)
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
+      <BackgroundImage
+        fluid={data.file.childImageSharp.fluid}
+        style={{ height: "100vh", overflow: "hidden" }}
       >
+        <Header siteTitle={data.site.siteMetadata.title} />
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <footer className="footer-section">
+          <Footer />
         </footer>
-      </div>
+      </BackgroundImage>
     </>
   )
 }
