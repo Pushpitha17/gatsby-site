@@ -3,7 +3,7 @@ templateKey: blog-post
 title: Second Post
 date: 2020-08-04T13:26:26.057Z
 description: Second post Boys
-featuredpost: true
+featuredpost: false
 featuredimage: /img/image2.jpeg
 tags:
   - music cover hippop
