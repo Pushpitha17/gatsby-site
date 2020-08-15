@@ -1,14 +1,21 @@
 import Layout from "../components/layout"
 import React from "react"
 import { Link } from "gatsby"
+import Form from "../components/Form"
+import { GoChevronRight } from "react-icons/go"
 
 const Connect = () => {
   return (
-    <Layout>
+    <Layout backgroundClass="fixedpage">
       <div className="section">
-        <div>Connect</div>
+        <div className="section-center form">
+          <div className="form-title">Connect</div>
+          <Form />
+        </div>
         <div className="center-btn">
-          <Link to="/blog/">Blog</Link>
+          <Link to="/blog/" className="blog-link">
+            Visit My Blog <GoChevronRight></GoChevronRight>
+          </Link>
         </div>
       </div>
     </Layout>

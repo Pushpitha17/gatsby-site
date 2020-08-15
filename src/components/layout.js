@@ -13,7 +13,7 @@ import BackgroundImage from "gatsby-background-image"
 import Header from "./header"
 import Footer from "./Footer"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, backgroundClass, pageClass }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -35,13 +35,13 @@ const Layout = ({ children }) => {
     <>
       <BackgroundImage
         fluid={data.file.childImageSharp.fluid}
-        style={{ height: "100vh", overflow: "hidden" }}
+        className={backgroundClass ? backgroundClass : "background"}
       >
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <main>{children}</main>
-        <footer className="footer-section">
-          <Footer />
-        </footer>
+        <div className={`layout ${pageClass ? pageClass : ""}`}>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <main>{children}</main>
+          <Footer className="section" />
+        </div>
       </BackgroundImage>
     </>
   )

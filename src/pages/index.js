@@ -12,9 +12,9 @@ const IndexPage = ({ data }) => {
   } = data
 
   return (
-    <Layout>
+    <Layout backgroundClass="fixedpage">
       <SEO title="Home" />
-      <div className="section">
+      <div className="section center-items">
         <div className="section-center">
           <Image fluid={fluid} className="main-logo" />
         </div>

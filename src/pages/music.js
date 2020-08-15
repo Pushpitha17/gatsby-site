@@ -1,5 +1,6 @@
 import React from "react"
 import { useQuery } from "react-query"
+import Layout from "../components/layout"
 
 const API_KEY = "AIzaSyDZK00lowQV_ar2FQ6W2UcrwOWEwaU4ruk"
 const Channel_Id = "UCC5NPVVnatGWNSZq36e-EZQ"
@@ -10,6 +11,7 @@ const fetchdata = async () => {
       `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${Channel_Id}&key=${API_KEY}`
     )
   ).json()
+  console.log(fetchPlaylistId)
 
   const playlistId =
     fetchPlaylistId.items[0].contentDetails.relatedPlaylists.uploads
@@ -26,7 +28,7 @@ const fetchdata = async () => {
       item.snippet.resourceId.videoId,
     ]
   })
-  // console.log(fetchUploads.items)
+  console.log(fetchUploads.items)
   return thumbnails
 }
 
@@ -35,19 +37,17 @@ const Music = props => {
 
   console.log(data, status)
   return (
-    <div>
-      music page
-      {data
-        ? data.map((item, index) => (
-            <div
-              style={{ height: "400px", width: "500px", margin: "3em" }}
-              key={index}
-            >
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${item[1]}`}
-                srcDoc={`<style>
+    <Layout>
+      <div className="section">
+        <div className="section-center">
+          {data
+            ? data.map((item, index) => (
+                <div className="music-vid" key={index}>
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.youtube.com/embed/${item[1]}`}
+                    srcDoc={`<style>
           *{padding:0;margin:0;overflow:hidden}
           html,body{height:100%}
           img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
@@ -57,14 +57,16 @@ const Music = props => {
           <img src=${item[0]} alt='Video The Dark Knight Rises: What Went Wrong? – Wisecrack Edition'>
           <span>▶</span>
           </a>`}
-                frameBorder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          ))
-        : data}
-    </div>
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              ))
+            : data}
+        </div>
+      </div>
+    </Layout>
   )
 }
 

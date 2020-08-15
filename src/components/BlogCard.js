@@ -3,8 +3,8 @@ import Image from "gatsby-image"
 
 const BlogCard = ({ image, title, desc }) => {
   return (
-    <div>
-      <Image fluid={image} className="" />
+    <div className="blog-card">
+      <Image fluid={image} className="blog-card-img" />
       <div>{title}</div>
       <div>{desc}</div>
     </div>

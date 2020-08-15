@@ -14,7 +14,7 @@ const about = ({ data }) => {
   } = data
 
   return (
-    <Layout>
+    <Layout backgroundClass="fixedpage">
       <div className="section">
         <div className="section-center">
           <div className="about-content">
